@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="'View All Courses'"></title>
+        <script src="/js/jquery-3.2.1.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/datatable/datatables.css" />
+		<script type="text/javascript" charset="utf8" src="/datatable/datatables.js"></script>
+		<script>
+		$(document).ready( function () {
+		    $('#table_id').DataTable();
+		} );
+		</script>
+    </head>
+    <body>
+        <h1>All Students</h1>
+        
+        <table id="table_id">
+        	<thead>
+        		<tr>
+        			<th>No</th>
+        			<th>ID</th>
+        			<th>Courses</th>
+        			<th>Credits</th>    			
+        		</tr>
+        	</thead>
+        	<tbody>
+        		<div th:each="course,iterationStatus: ${courses}" th:class="${iterationStatus.odd}?'odd'">
+		        	<tr>
+			            <td th:text="${iterationStatus.count}">No. 1</td>
+				       	<td th:text="${course.id_course}">Student NPM</td>
+				       	<td th:text="${course.name}">Student Name</td>
+				       	<td th:text="${course.credits}">Student GPA</td>
+				       	
+
+				    </tr>
+			    </div>
+        	</tbody>
+        </table>          	
+    </body>
+</html>
